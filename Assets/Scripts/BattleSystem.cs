@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST};
+public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST, ATTACKING};
 
 public class BattleSystem : MonoBehaviour
 {
@@ -92,14 +92,15 @@ public class BattleSystem : MonoBehaviour
 */
     IEnumerator PlayerAttack(Unit enemyUnit,BattleHUD enemyHUD)
     {
-
+        state = BattleState.ATTACKING;
         //check if the attacked enemy is aleady dead
         if(enemyUnit.currentHP == 0)
         {
             dialogueText.text = "the enemy is aleardy dead, choose an other one";
-            yield return new WaitForSeconds(2f);
-
-            PlayerTurn();
+            yield return new WaitForSeconds(1.5f);
+            
+            state = BattleState.PLAYERTURN;
+            
         }
         else
         {    
@@ -124,9 +125,16 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {    
-            //Enemy's turn
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemiesTurn());
+            
+            if( state == BattleState.PLAYERTURN){
+                //Restart player turn
+                PlayerTurn();
+            }
+            else{
+                //Enemy's turn
+                state = BattleState.ENEMYTURN;
+                StartCoroutine(EnemiesTurn());
+            }
         }   
     }
 
@@ -172,6 +180,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator EnemiesTurn()
     {
         bool isDead = EnemyAction(enemy1Unit);
+        yield return new WaitForSeconds(2f);
         if (isDead)
         {
             state = BattleState.LOST;
@@ -179,8 +188,9 @@ public class BattleSystem : MonoBehaviour
         }
         else 
         {
-            yield return new WaitForSeconds(2f);
+            
             isDead = EnemyAction(enemy2Unit);
+            yield return new WaitForSeconds(2f);
             if (isDead)
             {
                 state = BattleState.LOST;
@@ -188,8 +198,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSeconds(2f);
                 isDead = EnemyAction(enemy3Unit);
+                yield return new WaitForSeconds(2f);
                 if (isDead)
                 {
                     state = BattleState.LOST;
