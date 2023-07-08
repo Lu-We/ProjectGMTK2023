@@ -40,7 +40,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "A wild " + enemyUnit.unitName + " approaches ...";
 
         playerHUD.setHUD(playerUnit);
-        enemyHUD.SetHUF(enemyUnit);
+        enemyHUD.SetHUD(enemyUnit);
 
         yield return new WaitForSeconds(2f);
 
