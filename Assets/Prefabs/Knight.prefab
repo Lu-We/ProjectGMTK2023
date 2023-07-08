@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 6160956847279512188}
   - component: {fileID: 6160956847279512186}
   - component: {fileID: 6160956847279512189}
+  - component: {fileID: -1804555758104228693}
   m_Layer: 5
   m_Name: Knight
   m_TagString: Untagged
@@ -153,6 +154,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-1804555758104228693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6160956847279512191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c481b1449bac048965628618403de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: Knight
+  unitLevel: 1
+  damage: 50
+  maxHP: 75
+  currentHP: 75
 --- !u!1 &6160956847391315736
 GameObject:
   m_ObjectHideFlags: 0
