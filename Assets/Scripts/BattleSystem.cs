@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST};
 
@@ -16,9 +17,9 @@ public class BattleSystem : MonoBehaviour
     Unit playerUnit;
     Unit enemyUnit;
     
-    public Text dialogueText;
+    public TextMeshProUGUI dialogueText;
 
-    public BattleHUD playerHUS;
+    public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
 
 
@@ -29,6 +30,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
+
     IEnumerator SetupBattle()
     {
         GameObject playerGo = Instantiate(playerPrefab, playerBattleStation);
@@ -39,7 +41,7 @@ public class BattleSystem : MonoBehaviour
 
         dialogueText.text = "A wild " + enemyUnit.unitName + " approaches ...";
 
-        playerHUD.setHUD(playerUnit);
+        playerHUD.SetHUD(playerUnit);
         enemyHUD.SetHUD(enemyUnit);
 
         yield return new WaitForSeconds(2f);
@@ -56,6 +58,7 @@ public class BattleSystem : MonoBehaviour
         enemyHUD.SetHP(enemyUnit.currentHP);
         dialogueText.text = "the attack is succesful";
 
+        state = BattleState.ENEMYTURN;
         yield return new WaitForSeconds(2f);
 
         //check if the enemy is dead
@@ -77,8 +80,9 @@ public class BattleSystem : MonoBehaviour
         playerUnit.Heal(5);
 
         playerHUD.SetHP(playerUnit.currentHP);
-        dialogueText.text = "You feel renewed strenght!";
+        dialogueText.text = "You feel renewed strength!";
 
+        state = BattleState.ENEMYTURN;
         yield return new WaitForSeconds(2f);
 
         state = BattleState.ENEMYTURN;
@@ -114,9 +118,9 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.WON)
         {
-            dialogueText.text = "You won the battle!";
+            dialogueText.text = "Heroes lost the battle!";
         }
-        elseif (state == BattleState.LOST)
+        else if (state == BattleState.LOST)
         {
             dialogueText.text = "You were defeated...";
         }
@@ -124,17 +128,17 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
-        dialogueText.text = "Choose an action :";
+        dialogueText.text = "What you gonna do about it :";
     }
 
-    void OnAttackButton()
+    public void OnAttackButton()
     {
         if(state != BattleState.PLAYERTURN)
             return;
         
         StartCoroutine(PlayerAttack());
     }
-    void OnHealButton()
+    public void OnHealButton()
     {
         if(state != BattleState.PLAYERTURN)
             return;
