@@ -587,7 +587,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2076761539}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: OnAttackButton
+        m_MethodName: OnAttack3Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1200,6 +1200,7 @@ GameObject:
   - component: {fileID: 617024050}
   - component: {fileID: 617024052}
   - component: {fileID: 617024051}
+  - component: {fileID: 617024053}
   m_Layer: 5
   m_Name: ArcherToolTip (1)
   m_TagString: Untagged
@@ -1325,6 +1326,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617024049}
   m_CullTransparentMesh: 1
+--- !u!114 &617024053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617024049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0b98ef5baffe146b0215ef315e46e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 617024051}
+  healthBar: {fileID: 1184227025}
 --- !u!1 &721318107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,6 +1428,7 @@ GameObject:
   - component: {fileID: 766951758}
   - component: {fileID: 766951760}
   - component: {fileID: 766951759}
+  - component: {fileID: 766951761}
   m_Layer: 5
   m_Name: KnightToolTip
   m_TagString: Untagged
@@ -1538,6 +1554,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766951757}
   m_CullTransparentMesh: 1
+--- !u!114 &766951761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766951757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0b98ef5baffe146b0215ef315e46e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 766951759}
+  healthBar: {fileID: 1679544046}
 --- !u!1 &789674865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,7 +1768,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2076761539}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: OnAttackButton
+        m_MethodName: OnAttack2Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3091,7 +3121,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2076761539}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: OnAttackButton
+        m_MethodName: OnAttack1Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3131,12 +3161,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 2264611939734979358, guid: f0fcc733d28b60d47972ac10f98d09f0, type: 3}
-  enemyPrefab: {fileID: 5090843393018769057, guid: be7c3a8d88e60b94da0c1bf721a4f4d8, type: 3}
+  enemy1Prefab: {fileID: 8446464781005552597, guid: 5539df239fe31d44c9a96f5179dd0390, type: 3}
+  enemy2Prefab: {fileID: 6160956847279512191, guid: a59577944c4be7048ae747ae58b2aa16, type: 3}
+  enemy3Prefab: {fileID: 5090843393018769057, guid: be7c3a8d88e60b94da0c1bf721a4f4d8, type: 3}
   playerBattleStation: {fileID: 65482455}
-  ennemyBattleStation: {fileID: 721318108}
+  enemy1BattleStation: {fileID: 1698160521}
+  enemy2BattleStation: {fileID: 1431756702}
+  enemy3BattleStation: {fileID: 721318108}
   dialogueText: {fileID: 469265482}
   playerHUD: {fileID: 1133411304}
-  enemyHUD: {fileID: 5051189754875070007}
+  enemy1HUD: {fileID: 617024053}
+  enemy2HUD: {fileID: 766951761}
+  enemy3HUD: {fileID: 5051189754875070007}
   state: 0
 --- !u!4 &2076761540
 Transform:
