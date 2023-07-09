@@ -30,6 +30,10 @@ public class MusicManager: MonoBehaviour
         // musicState.setParameterByName("music_Layer3", thirdLayer);    
     } 
 
+    public void StopMusic(){
+        musicState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+    
     private void OnDestroy() {
         musicState.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 

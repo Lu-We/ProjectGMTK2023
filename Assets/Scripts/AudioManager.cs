@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     public FMODUnity.EventReference HealSound;
     
     public FMODUnity.EventReference WinSound;
+    public FMODUnity.EventReference PlayerTurnSound;
+    public FMODUnity.EventReference EnnemyTurnSound;
     // public FMODUnity.EventReference AttackUp;
     // public FMODUnity.EventReference AttackMid;
     // public FMODUnity.EventReference AttackDown;
@@ -32,6 +34,13 @@ public class AudioManager : MonoBehaviour
     {
     }
 
+    public void playPlayerTurnSFX(){
+         FMODUnity.RuntimeManager.PlayOneShot(PlayerTurnSound,transform.position);
+    }
+    
+    public void playEnnemyTurnSFX(){
+         FMODUnity.RuntimeManager.PlayOneShot(EnnemyTurnSound,transform.position);
+    }
 
     public void playHealSFX(){
          FMODUnity.RuntimeManager.PlayOneShot(HealSound,transform.position);

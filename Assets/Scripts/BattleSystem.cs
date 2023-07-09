@@ -9,6 +9,7 @@ public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST, ATTACKING};
 public class BattleSystem : MonoBehaviour
 {
     public AudioManager audioManager;
+    public MusicManager musicManager;
     public GameObject playerPrefab;
     public GameObject enemy1Prefab;
     public GameObject enemy2Prefab;
@@ -154,7 +155,7 @@ public class BattleSystem : MonoBehaviour
     {
         audioManager.playHealSFX();
 
-        playerUnit.Heal(5);
+        playerUnit.Heal(50);
 
         playerHUD.SetHP(playerUnit.currentHP);
         dialogueText.text = "You feel renewed strength!";
@@ -193,11 +194,15 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemiesTurn()
     {
-        
+        audioManager.playEnnemyTurnSFX();
+        yield return new WaitForSeconds(0.2f);
+
+        audioManager.PlayArcherAtkSFX();
+        yield return new WaitForSeconds(0.75f);
         bool isDead = EnemyAction(enemy1Unit);
         yield return new WaitForSeconds(0.3f);
         if (enemy1Unit.currentHP != 0) enemy1Unit.transform.position += new Vector3(1,0,0);
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(0.8f);
         if (isDead)
         {
             state = BattleState.LOST;
@@ -251,7 +256,7 @@ public class BattleSystem : MonoBehaviour
 
             if(enemyUnit.unitName == "Mage") audioManager.PlayMageSFX();
             else if (enemyUnit.unitName == "Knight") audioManager.PlayKnightAtkSFX();
-            else if (enemyUnit.unitName == "Archer") audioManager.PlayArcherAtkSFX();
+            //else if (enemyUnit.unitName == "Archer") audioManager.PlayArcherAtkSFX();
 
             enemyUnit.transform.position += new Vector3(-1,0,0);
             //yield return new WaitForSeconds(1f);
@@ -283,16 +288,19 @@ public class BattleSystem : MonoBehaviour
         if (state == BattleState.WON)
         {
             dialogueText.text = "Heroes lost the battle!";
+            musicManager.StopMusic();
             audioManager.PlayWinSFX();
         }
         else if (state == BattleState.LOST)
         {
             dialogueText.text = "You were defeated...";
+            musicManager.StopMusic();
         }
     }
 
     void PlayerTurn()
-    {
+    {   
+        audioManager.playPlayerTurnSFX();
         Button1.interactable = true;
         Button2.interactable = true;
         Button3.interactable = true;

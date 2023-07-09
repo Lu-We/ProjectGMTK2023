@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 34bebc21177df8045afa1b51b26b3c76, type: 3}
-  m_Color: {r: 0.81568635, g: 0.11764707, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 07f0922b2fa92654488656400bb4baf8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -117,11 +117,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 294868588
-      Data2: 1273212785
-      Data3: -1012516432
-      Data4: 955525527
-    Path: event:/ATK_Dark
+      Data1: 1356330892
+      Data2: 1287899048
+      Data3: 2066334601
+      Data4: -85272898
+    Path: event:/ATK_Fire
   Event: 
   PlayEvent: 1
   StopEvent: 0
