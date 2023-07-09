@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{aa83bf63-6c7c-4d65-9d2d-14e772ab4e79}">
+		<property name="assetPath">
+			<value>GMTK_Music.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>83.47827083333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0d383551-8895-4f6f-8dec-58da21e8adb7}</destination>
+		</relationship>
+	</object>
+</objects>
