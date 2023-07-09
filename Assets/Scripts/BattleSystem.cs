@@ -8,6 +8,7 @@ public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST, ATTACKING};
 
 public class BattleSystem : MonoBehaviour
 {
+    public AudioManager audioManager;
     public GameObject playerPrefab;
     public GameObject enemy1Prefab;
     public GameObject enemy2Prefab;
@@ -113,8 +114,8 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {    
-            Destroy(Instantiate(FireBall, FireBallSpawn),0.5f);
-            yield return new WaitForSeconds(0.5f);
+            Destroy(Instantiate(FireBall, FireBallSpawn),0.75f);
+            yield return new WaitForSeconds(0.75f);
             //Damage the enemy
             enemyUnit.TakeDamage(playerUnit.damage);
 
@@ -122,7 +123,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "the attack is succesful";
 
 
-            yield return new WaitForSeconds(1.1f);
+            yield return new WaitForSeconds(1f);
         
         }   
         
@@ -151,6 +152,8 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerHeal()
     {
+        audioManager.playHealSFX();
+
         playerUnit.Heal(5);
 
         playerHUD.SetHP(playerUnit.currentHP);
@@ -246,6 +249,10 @@ public class BattleSystem : MonoBehaviour
         {
             dialogueText.text = enemyUnit.unitName + " attacks!";
 
+            if(enemyUnit.unitName == "Mage") audioManager.PlayMageSFX();
+            else if (enemyUnit.unitName == "Knight") audioManager.PlayKnightAtkSFX();
+            else if (enemyUnit.unitName == "Archer") audioManager.PlayArcherAtkSFX();
+
             enemyUnit.transform.position += new Vector3(-1,0,0);
             //yield return new WaitForSeconds(1f);
 
@@ -276,6 +283,7 @@ public class BattleSystem : MonoBehaviour
         if (state == BattleState.WON)
         {
             dialogueText.text = "Heroes lost the battle!";
+            audioManager.PlayWinSFX();
         }
         else if (state == BattleState.LOST)
         {
@@ -314,6 +322,7 @@ public class BattleSystem : MonoBehaviour
             return;
         
         DisableButton();
+        audioManager.PlayClickSFX();
         StartCoroutine(PlayerAttack(enemy1Unit, enemy1HUD));
     }
 
@@ -323,6 +332,7 @@ public class BattleSystem : MonoBehaviour
             return;
         
         DisableButton();
+        audioManager.PlayClickSFX();
         StartCoroutine(PlayerAttack(enemy2Unit, enemy2HUD));
     }
 
@@ -332,6 +342,7 @@ public class BattleSystem : MonoBehaviour
             return;
         
         DisableButton();
+        audioManager.PlayClickSFX();
         StartCoroutine(PlayerAttack(enemy3Unit, enemy3HUD));
     }
     public void OnHealButton()
@@ -340,6 +351,7 @@ public class BattleSystem : MonoBehaviour
             return;
         
         DisableButton();
+        audioManager.PlayClickSFX();
         StartCoroutine(PlayerHeal());
     }
 

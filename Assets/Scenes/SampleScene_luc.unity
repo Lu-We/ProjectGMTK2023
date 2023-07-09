@@ -3249,6 +3249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2076761540}
   - component: {fileID: 2076761539}
+  - component: {fileID: 2076761541}
   m_Layer: 0
   m_Name: Battle System
   m_TagString: Untagged
@@ -3268,6 +3269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7debb6a61eba6645b573133ddce4830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 2076761541}
   playerPrefab: {fileID: 2264611939734979358, guid: f0fcc733d28b60d47972ac10f98d09f0, type: 3}
   enemy1Prefab: {fileID: 8446464781005552597, guid: 5539df239fe31d44c9a96f5179dd0390, type: 3}
   enemy2Prefab: {fileID: 6160956847279512191, guid: a59577944c4be7048ae747ae58b2aa16, type: 3}
@@ -3303,6 +3305,76 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2076761541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076761538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d46dd3b88d59e64781d460ee812d6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KnightAtkSound:
+    Guid:
+      Data1: 1516871063
+      Data2: 1249754010
+      Data3: -1276499805
+      Data4: 130616437
+    Path: event:/ATK_Slash
+  MageIceAtkSound:
+    Guid:
+      Data1: -1254608072
+      Data2: 1306087375
+      Data3: 1404929940
+      Data4: 1467833445
+    Path: event:/ATK_Ice
+  MageFireAtkSound:
+    Guid:
+      Data1: 1356330892
+      Data2: 1287899048
+      Data3: 2066334601
+      Data4: -85272898
+    Path: event:/ATK_Fire
+  ArcherAtkSound:
+    Guid:
+      Data1: 294868588
+      Data2: 1273212785
+      Data3: -1012516432
+      Data4: 955525527
+    Path: event:/ATK_Dark
+  ClickSound:
+    Guid:
+      Data1: 1923341595
+      Data2: 1099825581
+      Data3: 454894219
+      Data4: 701273439
+    Path: event:/UI_MouseClick
+  OverSound:
+    Guid:
+      Data1: 276465208
+      Data2: 1172780327
+      Data3: -1964441727
+      Data4: 1250509208
+    Path: event:/UI_MouseOver
+  HealSound:
+    Guid:
+      Data1: 294868588
+      Data2: 1273212785
+      Data3: -1012516432
+      Data4: 955525527
+    Path: event:/ATK_Dark
+  WinSound:
+    Guid:
+      Data1: 294868588
+      Data2: 1273212785
+      Data3: -1012516432
+      Data4: 955525527
+    Path: event:/ATK_Dark
+  stepSoundPeriod: 0.2
+  stepSoundTimer: 0
 --- !u!1 &2103676193
 GameObject:
   m_ObjectHideFlags: 0
