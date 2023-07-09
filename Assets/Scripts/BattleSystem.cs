@@ -13,6 +13,14 @@ public class BattleSystem : MonoBehaviour
     public GameObject enemy2Prefab;
     public GameObject enemy3Prefab;
 
+    public GameObject FireBall;
+    public Transform FireBallSpawn;
+
+    public Button Button1;
+    public Button Button2;
+    public Button Button3;
+    public Button Button4;
+
     public Transform playerBattleStation;
     public Transform enemy1BattleStation;
     public Transform enemy2BattleStation;
@@ -35,6 +43,7 @@ public class BattleSystem : MonoBehaviour
 
     void Start()
     {
+        DisableButton();
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
@@ -58,7 +67,7 @@ public class BattleSystem : MonoBehaviour
         enemy2HUD.SetHUD(enemy2Unit);
         enemy3HUD.SetHUD(enemy3Unit);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         state = BattleState.PLAYERTURN;
         PlayerTurn();
@@ -97,13 +106,15 @@ public class BattleSystem : MonoBehaviour
         if(enemyUnit.currentHP == 0)
         {
             dialogueText.text = "the enemy is aleardy dead, choose an other one";
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.2f);
             
             state = BattleState.PLAYERTURN;
             
         }
         else
         {    
+            Destroy(Instantiate(FireBall, FireBallSpawn),0.5f);
+            yield return new WaitForSeconds(0.5f);
             //Damage the enemy
             enemyUnit.TakeDamage(playerUnit.damage);
 
@@ -111,7 +122,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "the attack is succesful";
 
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.1f);
         
         }   
         
@@ -146,7 +157,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "You feel renewed strength!";
 
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.1f);
 
         state = BattleState.ENEMYTURN;
         StartCoroutine(EnemiesTurn());
@@ -179,8 +190,11 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemiesTurn()
     {
+        
         bool isDead = EnemyAction(enemy1Unit);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.3f);
+        if (enemy1Unit.currentHP != 0) enemy1Unit.transform.position += new Vector3(1,0,0);
+        yield return new WaitForSeconds(1.1f);
         if (isDead)
         {
             state = BattleState.LOST;
@@ -190,7 +204,9 @@ public class BattleSystem : MonoBehaviour
         {
             
             isDead = EnemyAction(enemy2Unit);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.3f);
+            if (enemy2Unit.currentHP != 0) enemy2Unit.transform.position += new Vector3(1,0,0);
+            yield return new WaitForSeconds(1.1f);
             if (isDead)
             {
                 state = BattleState.LOST;
@@ -199,7 +215,9 @@ public class BattleSystem : MonoBehaviour
             else
             {
                 isDead = EnemyAction(enemy3Unit);
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.3f);
+                if (enemy3Unit.currentHP != 0) enemy3Unit.transform.position += new Vector3(1,0,0);
+                yield return new WaitForSeconds(1.1f);
                 if (isDead)
                 {
                     state = BattleState.LOST;
@@ -212,7 +230,7 @@ public class BattleSystem : MonoBehaviour
                 }
             }
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
 
 
 
@@ -228,6 +246,7 @@ public class BattleSystem : MonoBehaviour
         {
             dialogueText.text = enemyUnit.unitName + " attacks!";
 
+            enemyUnit.transform.position += new Vector3(-1,0,0);
             //yield return new WaitForSeconds(1f);
 
             bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
@@ -266,6 +285,10 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
+        Button1.interactable = true;
+        Button2.interactable = true;
+        Button3.interactable = true;
+        Button4.interactable = true;
         dialogueText.text = "What you gonna do about it :";
     }
 /*
@@ -279,11 +302,18 @@ public class BattleSystem : MonoBehaviour
 
 */
 
+    void DisableButton(){
+        Button1.interactable = false;
+        Button2.interactable = false;
+        Button3.interactable = false;
+        Button4.interactable = false;
+    }
     public void OnAttack1Button()
     {
         if(state != BattleState.PLAYERTURN)
             return;
         
+        DisableButton();
         StartCoroutine(PlayerAttack(enemy1Unit, enemy1HUD));
     }
 
@@ -292,6 +322,7 @@ public class BattleSystem : MonoBehaviour
         if(state != BattleState.PLAYERTURN)
             return;
         
+        DisableButton();
         StartCoroutine(PlayerAttack(enemy2Unit, enemy2HUD));
     }
 
@@ -300,6 +331,7 @@ public class BattleSystem : MonoBehaviour
         if(state != BattleState.PLAYERTURN)
             return;
         
+        DisableButton();
         StartCoroutine(PlayerAttack(enemy3Unit, enemy3HUD));
     }
     public void OnHealButton()
@@ -307,6 +339,7 @@ public class BattleSystem : MonoBehaviour
         if(state != BattleState.PLAYERTURN)
             return;
         
+        DisableButton();
         StartCoroutine(PlayerHeal());
     }
 
