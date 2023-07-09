@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{3d40c362-39cf-4a5e-b29c-6049c4b705b3}">
+		<property name="assetPath">
+			<value>GMTK_dARK.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8550833333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0d383551-8895-4f6f-8dec-58da21e8adb7}</destination>
+		</relationship>
+	</object>
+</objects>
