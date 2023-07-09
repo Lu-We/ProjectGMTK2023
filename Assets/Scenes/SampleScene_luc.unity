@@ -3250,6 +3250,7 @@ GameObject:
   - component: {fileID: 2076761540}
   - component: {fileID: 2076761539}
   - component: {fileID: 2076761541}
+  - component: {fileID: 2076761542}
   m_Layer: 0
   m_Name: Battle System
   m_TagString: Untagged
@@ -3270,6 +3271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 2076761541}
+  musicManager: {fileID: 2076761542}
   playerPrefab: {fileID: 2264611939734979358, guid: f0fcc733d28b60d47972ac10f98d09f0, type: 3}
   enemy1Prefab: {fileID: 8446464781005552597, guid: 5539df239fe31d44c9a96f5179dd0390, type: 3}
   enemy2Prefab: {fileID: 6160956847279512191, guid: a59577944c4be7048ae747ae58b2aa16, type: 3}
@@ -3340,11 +3342,11 @@ MonoBehaviour:
     Path: event:/ATK_Fire
   ArcherAtkSound:
     Guid:
-      Data1: 294868588
-      Data2: 1273212785
-      Data3: -1012516432
-      Data4: 955525527
-    Path: event:/ATK_Dark
+      Data1: 1534766565
+      Data2: 1132855775
+      Data3: 1548189869
+      Data4: 720845868
+    Path: event:/ATK_Bow
   ClickSound:
     Guid:
       Data1: 1923341595
@@ -3361,20 +3363,53 @@ MonoBehaviour:
     Path: event:/UI_MouseOver
   HealSound:
     Guid:
-      Data1: 294868588
-      Data2: 1273212785
-      Data3: -1012516432
-      Data4: 955525527
-    Path: event:/ATK_Dark
+      Data1: 1451425229
+      Data2: 1168040489
+      Data3: -971625068
+      Data4: -1921204162
+    Path: event:/ATK_Heal
   WinSound:
     Guid:
-      Data1: 294868588
-      Data2: 1273212785
-      Data3: -1012516432
-      Data4: 955525527
-    Path: event:/ATK_Dark
+      Data1: -1973546161
+      Data2: 1262634187
+      Data3: 1054933896
+      Data4: -1551199075
+    Path: event:/Victory
+  PlayerTurnSound:
+    Guid:
+      Data1: -445688770
+      Data2: 1324551798
+      Data3: 491651504
+      Data4: -385695506
+    Path: event:/UI_PlayerTurn
+  EnnemyTurnSound:
+    Guid:
+      Data1: 2045218092
+      Data2: 1303569051
+      Data3: 1881997720
+      Data4: 1890773085
+    Path: event:/UI_EnnemyTurn
   stepSoundPeriod: 0.2
   stepSoundTimer: 0
+--- !u!114 &2076761542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076761538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9123dcec241ea854b926baee7c9a89a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music:
+    Guid:
+      Data1: 317500197
+      Data2: 1221756662
+      Data3: -1475780479
+      Data4: 817637702
+    Path: event:/Music
 --- !u!1 &2103676193
 GameObject:
   m_ObjectHideFlags: 0

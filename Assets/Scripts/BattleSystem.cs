@@ -197,8 +197,11 @@ public class BattleSystem : MonoBehaviour
         audioManager.playEnnemyTurnSFX();
         yield return new WaitForSeconds(0.2f);
 
-        audioManager.PlayArcherAtkSFX();
-        yield return new WaitForSeconds(0.75f);
+        if (enemy1Unit.currentHP != 0){
+            audioManager.PlayArcherAtkSFX();
+            yield return new WaitForSeconds(0.75f);
+        }
+        
         bool isDead = EnemyAction(enemy1Unit);
         yield return new WaitForSeconds(0.3f);
         if (enemy1Unit.currentHP != 0) enemy1Unit.transform.position += new Vector3(1,0,0);
