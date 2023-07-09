@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{cd52beaf-ee3d-4304-8406-8dc54da380b6}">
+		<property name="assetPath">
+			<value>GMTK_MouseOver.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.0069375</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0d383551-8895-4f6f-8dec-58da21e8adb7}</destination>
+		</relationship>
+	</object>
+</objects>
